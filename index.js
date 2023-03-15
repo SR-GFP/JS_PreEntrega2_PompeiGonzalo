@@ -40,9 +40,8 @@ function elegirServicio(salir){
     let opcionIngresada = parseInt(prompt(`Bienvenido
     1 - Ver productos disponibles
     2 - Buscar Productos
-    3 - Agregar Producto
-    4 - Comprar
-    5 - Salir del Menu`))
+    3 - Agregar Producto    
+    4 - Salir del Menu`))
 
     switch(opcionIngresada){
         case 1:
@@ -55,9 +54,6 @@ function elegirServicio(salir){
             agregarProducto()
         break;
         case 4:
-            comprar()
-        break;
-        case 5:
             alert("Gracias por su visita")
             salir= true
             return salir
@@ -157,21 +153,19 @@ function agregarProducto(){
     let modelo = prompt("Ingresa el modelo de la remera")
     let precio = parseInt(prompt("Ingresa el precio de la remera")) 
     let idNuevo = parseInt(prompt("Ingresa el ID de la remera"))
+
     
     const idDuplicado = stock.some((p) => p.id === idNuevo)
-    if (idDuplicado){
-        alert("El ID ya existe, por favor ingresa uno diferente")
+    if (!idDuplicado){
+        let nuevoProducto = "producto" + idNuevo            
     }else{
-        let nuevoProducto = "producto" + idNuevo
-        
+        alert("El ID ya existe, por favor ingresa uno diferente")
+        agregarProducto()
     }
+    
     const nuevoProducto = new RemerasEstampadas(idNuevo, talle, color, modelo, precio)
     console.log(nuevoProducto)
     stock.push(nuevoProducto)
 }
 
-//---------Funcion para comprar---------------//
-function comprar(){
-    alert("ejecutando funcion comprar")
-}
 menu()
