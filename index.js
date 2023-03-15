@@ -12,13 +12,13 @@ class RemerasEstampadas {
 
 
 //------------Instanciar Objetos------------------//
-const producto1 = new RemerasEstampadas (1, "XL", "Negra", "Ramones", 6000)
+const producto1 = new RemerasEstampadas (1, "XL", "NEGRA", "RAMONES", 6000)
 
-const producto2 = new RemerasEstampadas (2, "L", "Blanca", "ACDC", 5000)
+const producto2 = new RemerasEstampadas (2, "L", "BLANCA", "ACDC", 5000)
 
-const producto3 = new RemerasEstampadas (3, "M", "Roja", "Rolling Stones", 4000)
+const producto3 = new RemerasEstampadas (3, "M", "ROJA", "ROLLING STONES", 4000)
 
-const producto4 = new RemerasEstampadas (4, "XL", "Blanca", "Ramones", 6000)
+const producto4 = new RemerasEstampadas (4, "XL", "BLANCA", "RAMONES", 6000)
 
 
 //----------Arreglo de productos------------//
@@ -78,6 +78,73 @@ function productosDisponibles(array){
         Precio: ${productos.precio}
         `)        
     });    
+}
+//---------Funcion para filtrar---------------//
+function filtrar (array) {
+    //-----Menu para filtrado-------//
+    let opcionDeFiltrado = parseInt(prompt(`
+        1_ Buscar Remeras por TALLE
+        2_ Buscar Remeras por PRECIO
+        3_ Buscar Remeras por MODELO
+        4_ Buscar Remeras por COLOR
+    `))
+    switch(opcionDeFiltrado){
+        case 1:
+            productosPorTalle(array)
+        break;
+        case 2:
+            productosPorPrecio(array)
+        break;
+        case 3:
+            productosPorModelo(array)
+        break;
+        case 4:
+            productosPorColor(array)
+        break;
+        default:
+            alert("Elegi una opcion de la Lista")
+        break
+    }    
+}
+//-----Funciones de busqueda ------//
+function productosPorTalle(){
+    let talleBuscado = prompt("Ingresa el Talle que buscas")    
+    let elementosEcontrados = stock.filter(p => p.talle == talleBuscado.toUpperCase())
+    if(elementosEcontrados == 0){
+        alert("No contamos con ese talle en Stock")
+    }else{
+        productosDisponibles(elementosEcontrados)
+    }
+}
+
+function productosPorColor(){
+    let colorBuscado = prompt("Ingresa el Color de remera que buscas")    
+    let elementosEcontrados = stock.filter(p => p.color == colorBuscado.toUpperCase())
+    if(elementosEcontrados == 0){
+        alert("No contamos con ese color en Stock")
+    }else{
+        productosDisponibles(elementosEcontrados)
+    }
+}
+
+function productosPorPrecio(){
+    let precioBuscado = parseInt(prompt("Ingresa el precio buscado (Min: $4000 - Max:$6000)"))
+    let elementosEcontrados = stock.filter(p => p.precio == precioBuscado)
+    if(elementosEcontrados == 0){
+        alert("No contamos con Remeras de ese Precio en Stock")
+    }else{
+        productosDisponibles(elementosEcontrados)
+    }
+}
+
+function productosPorModelo(){
+    let modeloBuscado = prompt("Ingresa el modelo de remera que buscas")    
+    let elementosEcontrados = stock.filter(p => p.modelo == modeloBuscado.toUpperCase())
+    if(elementosEcontrados == 0){
+        alert("No contamos con ese modelo en Stock")
+    }else{
+        productosDisponibles(elementosEcontrados)
+    }
 }
 
 
