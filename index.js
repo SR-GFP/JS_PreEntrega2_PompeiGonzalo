@@ -68,6 +68,27 @@ function elegirServicio(salir){
     }
 }
 
+//---------Funcion para ver productos---------//
+function productosDisponibles(array){
+    let listaDeProductos = array.forEach(productos => {
+        alert(`Estos son nuestros productos disponibles:\n         
+        Modelo: ${productos.modelo}
+        Talle: ${productos.talle}
+        Color: ${productos.color}
+        Precio: ${productos.precio}
+        `)        
+    });    
+}
 
+
+
+//---------Funcion para agregar producto------//
+function agregarProducto(){
+    alert("ejecutando funcion agregar producto")
+}
+//---------Funcion para comprar---------------//
+function comprar(){
+    alert("ejecutando funcion comprar")
+}
 menu()
 
