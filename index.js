@@ -3,9 +3,9 @@
 class RemerasEstampadas {
     constructor(id, talle, color, modelo, precio){
         this.id = id
-        this.talle = talle
-        this.color = color
-        this.modelo = modelo
+        this.talle = talle.toUpperCase()
+        this.color = color.toUpperCase()
+        this.modelo = modelo.toUpperCase()
         this.precio = precio
     }
 }
@@ -68,10 +68,11 @@ function elegirServicio(salir){
     }
 }
 
-//---------Funcion para ver productos---------//
+//---------Funcion para ver productos de array---------//
 function productosDisponibles(array){
     let listaDeProductos = array.forEach(productos => {
-        alert(`Estos son nuestros productos disponibles:\n         
+        alert(`Estos son nuestros productos disponibles:\n 
+        ID: ${productos.id}        
         Modelo: ${productos.modelo}
         Talle: ${productos.talle}
         Color: ${productos.color}
@@ -151,11 +152,26 @@ function productosPorModelo(){
 
 //---------Funcion para agregar producto------//
 function agregarProducto(){
-    alert("ejecutando funcion agregar producto")
+    let talle = prompt("Ingresa el talle de la remera")
+    let color = prompt("Ingresa el color de la remera")
+    let modelo = prompt("Ingresa el modelo de la remera")
+    let precio = parseInt(prompt("Ingresa el precio de la remera")) 
+    let idNuevo = parseInt(prompt("Ingresa el ID de la remera"))
+    
+    const idDuplicado = stock.some((p) => p.id === idNuevo)
+    if (idDuplicado){
+        alert("El ID ya existe, por favor ingresa uno diferente")
+    }else{
+        let nuevoProducto = "producto" + idNuevo
+        
+    }
+    const nuevoProducto = new RemerasEstampadas(idNuevo, talle, color, modelo, precio)
+    console.log(nuevoProducto)
+    stock.push(nuevoProducto)
 }
+
 //---------Funcion para comprar---------------//
 function comprar(){
     alert("ejecutando funcion comprar")
 }
 menu()
-
